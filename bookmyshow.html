@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookMyShow Clone</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #f4f4f4;
+      color: #222;
+      padding-top: 120px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      z-index: 1000;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .topbar {
+      padding: 14px 24px 10px;
+      border-bottom: 1px solid #ececec;
+    }
+
+    .top-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -1px;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: #e33d57;
+    }
+
+    .search-box {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      background: #fafafa;
+      border: 1px solid #ececec;
+      border-radius: 6px;
+      padding: 10px 14px;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .search-box input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .right-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      white-space: nowrap;
+    }
+
+    .city {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .signin-btn {
+      background: #e94b67;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 14px;
+    }
+
+    .menu-icon {
+      width: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .menu-icon span {
+      display: block;
+      height: 2px;
+      background: #333;
+      border-radius: 2px;
+    }
+
+    .nav-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px 10px;
+      background: #fff;
+      font-size: 14px;
+    }
+
+    .nav-left,
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav-left div,
+    .nav-right div {
+      color: #333;
+    }
+
+    .hero-section {
+      padding: 6px 24px 22px;
+    }
+
+    .hero-strip {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 6px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .hero-strip::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .hero-strip::-webkit-scrollbar-thumb {
+      background: #d6d6d6;
+      border-radius: 999px;
+    }
+
+    .hero-card {
+      flex: 0 0 auto;
+      width: min(1200px, 82vw);
+      min-height: 290px;
+      border-radius: 10px;
+      scroll-snap-align: start;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .hero-krishna { background-image: url('https://assets-in-gm.bmscdn.com/promotions/cms/creatives/1780039007460_web1240x30pxahmjpg.jpeg'); }
+    .hero-great-grand { background-image: url('https://assets-in-gm.bmscdn.com/promotions/cms/creatives/1780058710829_webshowcase1240x300mmk.jpg'); }
+    .hero-chand { background-image: url('https://assets-in-gm.bmscdn.com/promotions/cms/creatives/1780057841447_chainsmokersweb.jpg'); }
+    .hero-pati { background-image: url('https://assets-in-gm.bmscdn.com/promotions/cms/creatives/1776147534355_popwebnew.jpg'); }
+
+    .section {
+      padding: 6px 24px 26px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .see-all {
+      font-size: 14px;
+      color: #e94b67;
+      font-weight: 600;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+    }
+
+    .poster {
+      height: 340px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 16px;
+      color: #fff;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .poster.one { background-image: url('https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/the-great-grand-superhero-et00496590-1779174883.jpg'); }
+    .poster.two { background-image: url('https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/chand-mera-dil-et00484700-1778492742.jpg'); }
+    .poster.three { background-image: url('https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/pati-patni-aur-woh-do-et00485890-1777898323.jpg'); }
+    .poster.four { background-image: url('https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kabanda-et00493449-1777523349.jpg'); }
+    .poster.five { background-image: url('https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/krishnavataram-part-1-the-heart-et00495498-1779699659.jpg'); }
+
+    .badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #ef476f;
+      color: #fff;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    .rating {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.78);
+      padding: 10px 12px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .star {
+      color: #ff4d67;
+      font-size: 16px;
+    }
+
+    .card-info {
+      padding: 12px 2px 6px;
+    }
+
+    .movie-name {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #222;
+    }
+
+    .movie-genre {
+      font-size: 13px;
+      color: #7b7b7b;
+      line-height: 1.4;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="topbar">
+      <div class="top-row">
+        <div class="logo">book<span>my</span>show</div>
+        <div class="search-box">
+          <div>⌕</div>
+          <input type="text" placeholder="Search for Movies, Events, Plays, Sports and Activities" />
+        </div>
+        <div class="right-actions">
+          <div class="city">Ahmedabad ▾</div>
+          <button class="signin-btn">Sign in</button>
+          <div class="menu-icon"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-row">
+      <div class="nav-left">
+        <div>Movies</div><div>Stream</div><div>Events</div><div>Plays</div><div>Sports</div><div>Activities</div>
+      </div>
+      <div class="nav-right">
+        <div>ListYourShow</div><div>Corporates</div><div>Offers</div><div>Gift Cards</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hero-section">
+      <div class="hero-strip">
+        <div class="hero-card hero-krishna">
+        </div>
+
+        <div class="hero-card hero-great-grand">
+        </div>
+
+        <div class="hero-card hero-chand">
+        </div>
+
+        <div class="hero-card hero-pati">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div class="section-title">Recommended Movies</div>
+        <div class="see-all">See All ›</div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="poster one"><div class="badge">PROMOTED</div><div class="rating"><span class="star">★</span> 9.2/10 <span>480+ Votes</span></div></div>
+          <div class="card-info"><div class="movie-name">The Great Grand Superhero</div><div class="movie-genre">Adventure / Family / Fantasy</div></div>
+        </div>
+
+        <div class="card">
+          <div class="poster two"><div class="rating"><span class="star">★</span> 8.2/10 <span>12.3K+ Votes</span></div></div>
+          <div class="card-info"><div class="movie-name">Chand Mera Dil</div><div class="movie-genre">Drama / Musical / Romantic</div></div>
+        </div>
+
+        <div class="card">
+          <div class="poster three"><div class="rating"><span class="star">★</span> 8.4/10 <span>18.4K+ Votes</span></div></div>
+          <div class="card-info"><div class="movie-name">Pati Patni Aur Woh Do</div><div class="movie-genre">Comedy / Romantic</div></div>
+        </div>
+
+        <div class="card">
+          <div class="poster four"><div class="rating"><span class="star">★</span> 8.6/10 <span>Early Ratings</span></div></div>
+          <div class="card-info"><div class="movie-name">Kabanda</div><div class="movie-genre">Supernatural / Thriller</div></div>
+        </div>
+
+        <div class="card">
+          <div class="poster five"><div class="rating"><span class="star">★</span> 9.1/10 <span>29.4K+ Votes</span></div></div>
+          <div class="card-info"><div class="movie-name">Krishnavatram Part 1</div><div class="movie-genre">Epic / Devotional / Drama</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
