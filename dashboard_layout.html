@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Grid Layout</title>
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#1f252d;
+    color:white;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:250px 1fr;
+    grid-template-rows:70px auto;
+    grid-template-areas:
+    "side nav"
+    "side main-content";
+    height:100vh;
+}
+
+.side{
+    grid-area:side;
+    background:#343a40;
+    border-right:1px solid #4b545c;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px;
+    border-bottom:1px solid #4b545c;
+    margin-bottom:10px;
+}
+
+.logo-icon{
+    width:40px;
+    height:40px;
+    background:#fff;
+    color:#343a40;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-weight:bold;
+    font-size:20px;
+   
+}
+
+.logo span{
+    font-size:18px;
+    color:#fff;
+}
+
+
+.sub-menu{padding-left:15px;}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 15px;
+    border-radius:5px;
+    color:#c2c7d0;
+    font-size:15px;
+}
+
+.menu-item .bi-chevron-right,
+.menu-item .bi-chevron-down{
+    margin-left:auto;
+}
+
+.badge{
+    margin-left:auto;
+    margin-right:10px;
+    background:#6c757d;
+    color:#fff;
+    padding:2px 8px;
+    border-radius:10px;
+    font-size:12px;
+    place-items:center;
+}
+
+.nav{
+    grid-area:nav;
+    background:#232932;
+    border-bottom:1px solid #444;
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    height:70px;
+    padding:0 25px;
+}
+
+.nav-left{
+    display:flex;
+    align-items:center;
+    gap:40px;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.nav-link{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#c2c7d0;
+    font-size:18px;
+}
+
+.nav-icon{
+    font-size:24px;
+    color:#c2c7d0;
+    cursor:pointer;
+}
+
+.notification{
+    position:relative;
+    display:flex;
+    align-items:center;
+}
+
+.count{
+    position:absolute;
+    top:-8px;
+    right:-10px;
+    min-width:18px;
+    height:18px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.red{
+    background:#dc3545;
+    color:white;
+}
+
+.yellow{
+    background:#ffc107;
+    color:black;
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.profile img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+}
+
+.profile span{
+    color:#c2c7d0;
+    font-size:18px;
+}
+
+.main-content{
+    grid-area:main-content;
+    padding:25px;
+    display:grid;
+    grid-template-rows:auto auto 1fr;
+    gap:25px;
+}
+
+.top{
+    display:grid;
+    grid-template-columns:1fr auto;
+}
+
+.top h1{
+    font-size:42px;
+}
+
+.cards-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.box{
+    height:180px;
+    border-radius:8px;
+    overflow:hidden;
+    display:grid;
+    grid-template-rows:1fr 55px;
+}
+
+.box-top{
+    padding:18px 25px;
+}
+
+.box-top h2{
+    font-size:42px;
+    font-weight:400;
+    margin-bottom:35px;
+    line-height:1;
+}
+
+.box-top p{
+    font-size:16px;
+    font-weight:400;
+}
+
+.box-bottom{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:16px;
+    font-weight:400;
+}
+
+.blue{
+    background:#1f6feb;
+}
+
+.blue .box-bottom{
+    background:#1b64d1;
+}
+
+.green{
+    background:#1e9255;
+}
+
+.green .box-bottom{
+    background:#1a844d;
+}
+
+.yellow{
+    background:#ffc107;
+    color:black;
+}
+
+.yellow .box-bottom{
+    background:#eab308;
+}
+
+.red{
+    background:#dc3545;
+}
+
+.red .box-bottom{
+    background:#cf2f40;
+}
+
+.content-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+}
+
+.chart-box{
+    background:#222831;
+    border-radius:6px;
+    padding:20px;
+    display:grid;
+    grid-template-rows:auto 1fr;
+}
+
+.title{
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+.chart{
+    height:300px;
+    position:relative;
+    background:repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 49px,
+        rgba(255,255,255,.15) 50px,
+        rgba(255,255,255,.15) 51px
+    );
+}
+
+.map{
+    background:#2f80ed;
+    border-radius:6px;
+    padding:20px;
+    display:grid;
+    grid-template-rows:auto 1fr auto;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    text-align:center;
+    font-size:20px;
+}
+
+.section{
+    padding:18px 15px 8px;
+    font-size:13px;
+    font-weight:700;
+    color:#adb5bd;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+}
+
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+<div class="layout">
+
+   <div class="side">
+
+    <div class="logo">
+        <div class="logo-icon">A</div>
+        <span>AdminLTE 4</span>
+    </div>
+
+    <div class="menu">
+
+        <div class="menu-item active">
+            <i class="bi bi-speedometer2"></i>
+            <span>Dashboard</span>
+            <i class="bi bi-chevron-down"></i>
+        </div>
+
+        <div class="sub-menu">
+
+            <div class="menu-item active">
+                <i class="bi bi-circle"></i>
+                <span>Dashboard v1</span>
+            </div>
+
+            <div class="menu-item">
+                <i class="bi bi-circle"></i>
+                <span>Dashboard v2</span>
+            </div>
+
+            <div class="menu-item">
+                <i class="bi bi-circle"></i>
+                <span>Dashboard v3</span>
+            </div>
+
+        </div>
+
+        <div class="menu-item">
+    <i class="bi bi-palette"></i>
+    <span>Theme Generate</span>
+</div>
+
+<div class="menu-item">
+    <i class="bi bi-box-seam"></i>
+    <span>Widgets</span>
+    <i class="bi bi-chevron-right"></i>
+</div>
+
+<div class="menu-item">
+    <i class="bi bi-briefcase"></i>
+    <span>Layout Options</span>
+    <span class="badge">7</span>
+    <i class="bi bi-chevron-right"></i>
+</div>
+
+<div class="menu-item">
+    <i class="bi bi-ui-checks-grid"></i>
+    <span>UI Elements</span>
+    <i class="bi bi-chevron-right"></i>
+</div>
+
+<div class="menu-item">
+    <i class="bi bi-envelope"></i>
+    <span>Mailbox</span>
+    <i class="bi bi-chevron-right"></i>
+</div>
+
+<div class="menu-item">
+    <i class="bi bi-pencil-square"></i>
+    <span>Forms</span>
+    <i class="bi bi-chevron-right"></i>
+</div>
+
+<div class="menu-item">
+    <i class="bi bi-table"></i>
+    <span>Tables</span>
+    <i class="bi bi-chevron-right"></i>
+</div>
+
+<div class="section">PAGES</div>
+
+<div class="menu-item">
+    <i class="bi bi-file-earmark-text"></i>
+    <span>Pages</span>
+    <i class="bi bi-chevron-right"></i>
+</div>
+
+<div class="section">EXAMPLES</div>
+
+<div class="menu-item">
+    <i class="bi bi-box-arrow-in-right"></i>
+    <span>Auth</span>
+    <i class="bi bi-chevron-right"></i>
+</div>
+
+</div>
+
+</div>
+    <div class="nav">
+    <div class="nav-left">
+
+        <i class="bi bi-list nav-icon"></i>
+        <div class="nav-link">
+            <i class="bi bi-grid"></i>
+            <span>Live preview</span>
+        </div>
+        <div class="nav-link">
+            <i class="bi bi-book"></i>
+            <span>Documentation</span>
+        </div>
+    </div>
+    <div class="nav-right">
+
+        <i class="bi bi-search nav-icon"></i>
+
+        <div class="notification">
+            <i class="bi bi-chat-text nav-icon"></i>
+            <span class="count red">3</span>
+        </div>
+
+        <div class="notification">
+            <i class="bi bi-bell-fill nav-icon"></i>
+            <span class="count yellow">15</span>
+        </div>
+
+        <i class="bi bi-arrows-fullscreen nav-icon"></i>
+
+        <i class="bi bi-moon-fill nav-icon"></i>
+
+        <div class="profile">
+            <img src="https://i.pravatar.cc/50?img=12" alt="">
+            <span>Alexander Pierce</span>
+        </div>
+
+    </div>
+
+</div>
+
+    <div class="main-content">
+
+        <div class="top">
+            <h1>Dashboard</h1>
+                <h4>
+            <span class="home">Home</span>
+            / Dashboard
+        </h4>
+        </div>
+
+        <div class="cards-grid">
+
+    <div class="box blue">
+
+        <div class="box-top">
+            <h2>150</h2>
+            <p>New Orders</p>
+        </div>
+
+        <div class="box-bottom">
+    More info&nbsp;
+    <i class="bi bi-link-45deg"></i>
+</div>
+
+    </div>
+
+    <div class="box green">
+
+        <div class="box-top">
+            <h2>53%</h2>
+            <p>Bounce Rate</p>
+        </div>
+
+        <div class="box-bottom">
+    More info&nbsp;
+    <i class="bi bi-link-45deg"></i>
+</div>
+
+    </div>
+
+    <div class="box yellow">
+
+        <div class="box-top">
+            <h2>44</h2>
+            <p>User Registrations</p>
+        </div>
+
+            <div class="box-bottom">
+    More info&nbsp;
+    <i class="bi bi-link-45deg"></i>
+            </div>
+    </div>
+    <div class="box red">
+        <div class="box-top">
+            <h2>65</h2>
+            <p>Unique Visitors</p>
+        </div>
+        <div class="box-bottom">
+    More info&nbsp;
+    <i class="bi bi-link-45deg"></i>
+</div>
+    </div>
+</div>
+        <div class="content-grid">
+            <div class="chart-box">
+                <div class="title">Sales Value</div>
+                <div class="chart"></div>
+            </div>
+            <div class="map">
+                <div class="title">Sales Value</div>
+                <div class="world"></div>
+                <div class="stats">
+                    <div>Visitors</div>
+                    <div>Online</div>
+                    <div>Sales</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

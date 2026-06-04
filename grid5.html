@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>placing grid items using grid colums and grd rows</title>
+    <style>
+        .container {
+            display: grid; 
+            grid-template-columns: repeat(4, 2fr);
+            grid-template-rows: repeat(3, 2fr);
+            height: 700px;
+            width: 1000px;
+            gap: 10px;
+            background-color: #ffffff;
+            border: 2px solid black;
+            padding: 10px;
+        }
+
+        .a{
+            background-color: rgb(7, 34, 240);
+           
+            grid-column: 1/2;        
+        }
+        .b{
+            background-color: rgb(7, 34, 240);
+            grid-column: 2/3;  
+            
+        }
+        .c{
+            background-color: rgb(7, 34, 240);
+    
+            grid-column: 3/5;         
+        }
+        .d{
+            background-color: rgb(7, 34, 240);
+    
+            grid-column: 1/-1;
+            
+        }
+        .e{
+            background-color: rgb(7, 34, 240);
+    
+            grid-column: 1/2;
+
+        }
+        .f{
+            background-color: rgb(7, 34, 240);
+            grid-column: 2/5;
+        }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <div class="a"></div>
+        <div class="b"></div>
+        <div class="c"></div>
+        <div class="d"></div>
+        <div class="e"></div>
+        <div class="f"></div>
+    </div>
+</body>
+</html>
