@@ -270,25 +270,31 @@ body{
     background:#222831;
     border-radius:6px;
     padding:20px;
-    display:grid;
-    grid-template-rows:auto 1fr;
+    display:flex;
+    flex-direction:column;
+    height:420px;
 }
 
 .title{
     font-size:28px;
-    margin-bottom:20px;
+    margin-bottom:10px;
+    flex-shrink:0;
 }
 
 .chart{
-    height:300px;
-    position:relative;
-    background:repeating-linear-gradient(
-        to bottom,
-        transparent 0px,
-        transparent 49px,
-        rgba(255,255,255,.15) 50px,
-        rgba(255,255,255,.15) 51px
-    );
+    flex:1;
+    width:100%;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+.chart img{
+    width:100%;
+    height:auto;
+    max-height:450px;
+    display:block;
 }
 
 .map{
@@ -297,6 +303,7 @@ body{
     padding:20px;
     display:grid;
     grid-template-rows:auto 1fr auto;
+    height:420px;
 }
 
 .stats{
@@ -315,6 +322,20 @@ body{
     letter-spacing:.5px;
 }
 
+.world{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.world img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
@@ -523,12 +544,16 @@ body{
 </div>
         <div class="content-grid">
             <div class="chart-box">
-                <div class="title">Sales Value</div>
-                <div class="chart"></div>
-            </div>
+    <div class="chart">
+        <img src="Screenshot 2026-06-05 at 8.06.51 AM.png" alt="Sales Graph">
+    </div>
+</div>
             <div class="map">
+                
                 <div class="title">Sales Value</div>
-                <div class="world"></div>
+                <div class="world">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg" alt="World Map">
+                </div>
                 <div class="stats">
                     <div>Visitors</div>
                     <div>Online</div>
