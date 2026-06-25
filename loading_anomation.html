@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>five dots loading animations</title>
+    <style>
+       
+        body{
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;   
+        }
+        .conatainer{
+            display:flex;
+            gap:20px;
+        }
+        .circle{
+            width:50px;
+            height:50px;
+            border-radius:50%;
+            animation:loading 1s ease infinite alternate;
+        }
+
+        .red{
+            background:red;
+        }
+        .blue{
+            background:blue;
+            animation-delay:.1s;
+        }
+        .green{
+            background:green;
+            animation-delay:.3s;
+        }
+        .yellow{
+            background:yellow;
+            animation-delay:.5s;
+        }
+        .orange{
+            background:orange;
+            animation-delay:.7s;
+        }
+
+        @keyframes loading {
+            0%{
+                transform:translateY(0);
+               
+                
+            }
+            100%{
+                transform:translateY(-50px);
+                
+            
+            }
+        }
+        </style>
+</head>
+<body>
+    <div class="conatainer">
+        <div class="red circle"></div>
+        <div class="blue circle"></div>
+        <div class="green circle"></div>
+        <div class="yellow circle"></div>
+        <div class="orange circle"></div>
+    </div>
+</body>
+</html>
