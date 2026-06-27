@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bouncing Ball</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+   
+}
+
+.ball{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#46b8f5;
+    position:absolute;
+    left:20px;
+    top:20px;
+    animation:move 4s linear infinite;
+}
+
+
+.step{
+    position:absolute;
+    border-top:6px solid #000;
+    border-right:6px solid #000;
+}
+
+.s1{
+    width:180px;
+    height:120px;
+    left:20px;
+    top:80px;
+}
+
+.s2{
+    width:180px;
+    height:120px;
+    left:200px;
+    top:200px;
+}
+
+.s3{
+    width:180px;
+    height:120px;
+    left:380px;
+    top:320px;
+}
+
+.s4{
+    width:180px;
+    left:560px;
+    top:440px;
+}
+
+
+@keyframes move{
+
+    0%{
+        transform:translate(0,0);
+    }
+ 
+    15%{
+        transform:translate(190px,-30px);
+    }
+
+    25%{
+        transform:translate(190px,120px);
+    }
+
+    40%{
+        transform:translate(330px,90px);
+    }
+
+    50%{
+        transform:translate(360px,240px);
+    }
+
+    65%{
+        transform:translate(510px,210px);
+    }
+
+    75%{
+        transform:translate(540px,360px);
+    }
+
+    100%{
+        transform:translate(540px,360px);
+    }
+
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <div class="ball"></div>
+
+    <div class="step s1"></div>
+    <div class="step s2"></div>
+    <div class="step s3"></div>
+    <div class="step s4"></div>
+
+</div>
+
+</body>
+</html>
