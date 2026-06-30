@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript</title>
+</head>
+<body>
+    <h1>javascript</h1>
+
+
+
+
+   <script>
+
+
+    // JavaScript functions for each operation
+
+    function returnadd(a,b){
+        return a + b;
+    }
+    function returnsub(a,b){
+        return a - b;
+    }
+    function returnmul(a,b){
+        return a * b;
+    }
+    function returndiv(a,b){
+        return a / b;
+    }
+    function calc(a, b, operator) {
+        if (operator == "+") {
+            return returnadd(a,b);
+        } else if (operator == "-") {
+            return returnsub(a,b);
+        } else if (operator == "*") {
+            return returnmul(a,b);
+        } else if (operator == "/") {
+            return returndiv(a,b);
+        } else {
+            return "Invalid operator";
+        }
+    }
+
+
+    const a = prompt("Enter 1st number");
+    const b = prompt("Enter 2nd number");
+    const operator = prompt("Enter operator (+,-,*,/)");
+    const result = calc(Number(a),Number(b),operator);
+    console.log(result);
+    alert("Result = " + result);
+
+    //1
+
+    function greetstudent(name, city = "indore") {
+        return `hello ${name} from ${city}!`;
+    }
+    greetstudent("John"); 
+    greetstudent("John", "New York"); 
+
+
+  //2
+    const multiply = (a, b) => a * b;
+    console.log(multiply(2, 3));
+    console.log(multiply(4, 5));
+    console.log(multiply(6, 7));
+
+    // 
+</script>
+</body> 
+</html>
+ ̰
