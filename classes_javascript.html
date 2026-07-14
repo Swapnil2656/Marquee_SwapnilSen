@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>classes_javascript</title>
+     <link rel="icon" href="data:,">
+</head>
+<body>
+    <script>
+//         class Person {
+//     constructor( name, age, city , pincode ,interest = []) {
+//         this.name = name;
+//         this.age = age;
+//         this.address = {
+//             city: city,
+//             pincode: pincode
+//         };
+//         this.interest = [...interest];
+//     }
+// }
+
+// let person1 = new Person("swapnil", 22);
+// console.log(person1.name, person1.age);
+
+// let person3 = new Person("sachin", 23, "Pune", 411033);
+// console.log( person3.name, person3.age,person3.address.city,person3.address.pincode);
+
+// let person2 = new Person( "sachin",23,  "Pune", 411033, ["cricket", "football"]);
+// console.log( person2.name, person2.age, person2.address.city, person2.address.pincode, person2.interest);
+
+// class Car {
+//     constructor(company, model_year, model, tyres, features = []) {
+//         this.company = company;
+//         this.model_year = model_year;
+//         this.model = model;
+
+//         this.tyres = {
+//            front_left: tyres,
+//            front_right: tyres,
+//            rear_left: tyres,
+//            rear_right: tyres
+//         };
+
+//         this.features = [...features];
+//     }
+// }
+
+// let car1 = new Car("tata", 2020, "nexon", [18, 18, 19,19], ["ABS", "Airbags"]);
+// console.log(car1.company, car1.model_year, car1.model, car1.tyres, car1.features);
+
+// let car2 = new Car("maruti", 2021, "swift", [16, 16, 17, 17], ["power steering", "AC"]);
+// console.log(car2.company, car2.model_year, car2.model, car2.tyres, car2.features);
+
+// let car3 = new Car("hyundai", 2022, "creta", [20, 20, 21, 21], ["sunroof", "led lights"]);
+// console.log(car3.company, car3.model_year, car3.model, car3.tyres, car3.features);
+
+// let car4 = new Car("ford", 2023, "mustang", [22, 22, 23, 23], ["v8 engine", "leather seats"]);
+// console.log(car4.company, car4.model_year, car4.model, car4.tyres, car4.features);
+
+
+// class Bike {
+//     constructor(company, model_year, model, tyres, features = []) {
+//         this.company = company;
+//         this.model_year = model_year;
+//         this.model = model; 
+//         this.tyres = tyres;
+//         this.features = features;
+//     }
+// }
+
+// let tyress = {
+//     t1: 18,
+//     t2: 20
+// }
+
+// let features = ["ABS", "LED lights"];
+
+// let bike1 = new Bike("tvs", 2020, "apache", tyress, features);
+// console.log(bike1.company, bike1.model_year, bike1.model, bike1.tyres, bike1.features); 
+
+
+// classEmployee with constructor ,name, salary ,skills array , cart object (product and price)
+
+// class Employee {
+//     constructor(name, salary, skills , cart ) {
+//         this.name = name;
+//         this.salary = salary;
+//         this.skills = skills;
+//         this.cart = cart ;
+//     }
+// }   
+ 
+// let skills = ["javascript", "python"];
+// let cart = {
+//     product: "laptop",
+//     price: 50000
+// };
+
+// let employee2 = new Employee("sachin", 6000, skills, cart);
+// console.log(employee2.name, employee2.salary, employee2.skills, employee2.cart);
+
+// let employee1 = new Employee("swapnil", 5000, ["javascript", "python"], { product: "laptop", price: 50000 });
+// console.log(employee1.name, employee1.salary, employee1.skills, employee1.cart);        
+
+
+//methods in  class
+
+// class person {
+//     constructor(name, age, city, salary, skills, vehicle, address) {
+//         this.name = name;
+//         this.age = age;
+//         this.city = city;
+//         this.salary = salary;
+//         this.skills = skills;
+//         this.vehicle = vehicle;
+//         this.address = address;
+//     }
+
+//     getDetails() {
+//         return `Name: ${this.name}, Age: ${this.age}, City: ${this.city}, Salary: ${this.salary}, Skills: ${this.skills.join(", ")}, Vehicle: ${this.vehicle}, Address: ${this.address.street}, ${this.address.city}, ${this.address.state}, ${this.address.pincode}`;
+//     }
+// }
+
+// let person1 = new person( "swapnil",  22,  "Pune",  50000,  ["JavaScript", "Python"],   "BMW",
+//     {
+//         street: "MG Road",
+//         city: "Pune",
+//         state: "Maharashtra",
+//         pincode: 411001
+//     }
+// );
+
+// console.log(person1.getDetails());
+
+//inheritance in class
+
+// class Person {
+//     constructor(name, age) {
+//         this.name = name;
+//         this.age = age;
+//     }
+
+//     getDetails() {
+//         return `Name: ${this.name}, Age: ${this.age}`;
+//     }
+// }
+
+// class Employee extends Person {
+//     constructor(name, age, salary, skills) {
+//         super(name, age);
+//         this.salary = salary;
+//         this.skills = skills;
+//     }
+
+//     getDetails1() {
+//         return `${super.getDetails()}, Salary: ${this.salary}, Skills: ${this.skills.join(", ")}`;
+//     }
+// }
+
+// let employee1 = new Employee("swapnil", 22, 50000, ["JavaScript", "Python"]);
+
+// console.log(employee1.getDetails());   
+// console.log(employee1.getDetails1());  
+
+
+// getter and setter in class
+
+// class person {
+//     constructor(age) {
+//         this.age = age;
+//     }
+//     set age(value) {
+//         if (value >= 0 && value <= 150) {
+//             this._age = value;
+//         } else {
+//             console.log("Age must be a value between 0 and 150");
+//         }
+//     }
+//     get age() {
+//         return this._age;
+//     }
+// }
+// let person1 = new person(22);
+// console.log(person1.age); 
+// person1.age = -5; 
+// console.log(person1.age); 
+
+
+// static method in class
+
+
+
+    </script>
+</body>
+</html>

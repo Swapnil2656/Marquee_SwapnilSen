@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arrays javascript</title>
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <script>
+       
+        let employees = [
+            {name:"bhupendr",salary:70 , age:50, country : "india",department:"IT"},
+            {name:"rohan", salary:50, age:14, country: "london" , department:"Finance"},
+            {name: "kartik", salary:3, age:2, country : "india",department:"HR"},
+            {name:"suraj",salary:2, age : 19 , country:"russia",department:"Finance"},
+            {name:"aryan",salary:1,age:70 , country : "japan",department:"HR"},
+            {name:"aryan",salary:88,age:40 , country : "japan",department:"IT"},
+            {name: "jatin", salary:100, age:12, country:"russia",department:"HR"},
+            {name:"aaditya", salary:20, age : 19, country : "india",department:"Marketing"},
+            {name: "sachi", salary:1, age: 2 , country : "uganda",department:"Finance"},
+            {name: "khushi", salary : 35, age:99, country : "brazil",department:"IT"},
+            {name: "parul", salary:500, age:34, country: "zamaika", department:"CEO"}
+    ]
+    
+        employees.forEach((employee) => {
+            if (employee.department === "HR" && employee.country === "india") {
+                console.log(`The employee is from the ${employee.department} department, 
+                his/her name is ${employee.name}, 
+                his/her salary is ${employee.salary}, 
+                age is ${employee.age}, 
+                country is ${employee.country}`);
+            }
+        });
+// to count the number of employees in each department with department name without creating another array use for each loop and object
+ let itcount = 0;
+ let financecount = 0;
+ let hrCount = 0;
+ let marketingCount = 0;
+ let ceoCount = 0;
+ employees.forEach((employee) => {
+     if (employee.department === "IT") {
+         itcount++;
+     } else if (employee.department === "Finance") {
+         financecount++;        
+     } else if (employee.department === "HR") {
+            hrCount++;
+     } else if (employee.department === "Marketing") {
+            marketingCount++;
+     }else if (employee.department === "CEO") {
+            ceoCount++;
+     }
+ });
+ console.log(`Number of employees in IT department: ${itcount}`);
+ console.log(`Number of employees in Finance department: ${financecount}`);
+ console.log(`Number of employees in HR department: ${hrCount}`);
+ console.log(`Number of employees in Marketing department: ${marketingCount}`); 
+ console.log(`Number of employees in CEO department: ${ceoCount}`);
+
+ //to print country wise total salary of employees with their country name and also use filter use for each loop and object without creating another array
+  let indiaSalary = 0;
+  let londonSalary = 0;
+  let russiaSalary = 0;
+  let japanSalary = 0;  
+  let ugandaSalary = 0;
+  let brazilSalary = 0;
+  employees.forEach((employee) => {
+      if (employee.country === "india") {
+          indiaSalary += employee.salary;
+      } else if (employee.country === "london") {           
+          londonSalary += employee.salary;
+      } else if (employee.country === "russia") {
+          russiaSalary += employee.salary;
+      } else if (employee.country === "japan") {
+          japanSalary += employee.salary;
+      } else if (employee.country === "uganda") {
+          ugandaSalary += employee.salary;
+      } else if (employee.country === "brazil") {
+          brazilSalary += employee.salary;
+      }
+  });
+  console.log(`Total salary of employees in India: ${indiaSalary}`);
+  console.log(`Total salary of employees in London: ${londonSalary}`);
+  console.log(`Total salary of employees in Russia: ${russiaSalary}`);      
+  console.log(`Total salary of employees in Japan: ${japanSalary}`);      
+  console.log(`Total salary of employees in Uganda: ${ugandaSalary}`);
+  console.log(`Total salary of employees in Brazil: ${brazilSalary}`);
+let totalSalary = 0;
+employees.forEach((employee) => {   
+    if (employee.salary) {
+        totalSalary += employee.salary;
+    }
+});
+console.log(`Total salary of all employees: ${totalSalary}`);
+
+
+let departments = [
+    {Dname: "IT", Dcode: 58, employees :[]},
+    {Dname: "Finance", Dcode: 158, employees :[]},
+    {Dname: "HR", Dcode: 48, employees :[]},
+    {Dname: "Marketing", Dcode: 44, employees :[]},
+    {Dname: "CEO", Dcode: 2, employees :[]}
+]
+// to print all the employee names under each department name and department code use for each loop and push it name in new array and print it with department name
+
+
+departments.forEach((dept) => {
+        dept.employees = [];
+
+        employees.forEach((emp) => {
+          if (emp.department === dept.Dname) {
+            dept.employees.push({
+              name: emp.name,
+              salary: emp.salary,
+              age: emp.age,
+              country: emp.country,
+            });
+          }
+ });
+});
+//     employees.forEach(employee => {
+//         departments.forEach(department => {
+//             if (employee.department === department.Dname){
+//                 department.employees.push(employee.name);
+//             }
+//         })
+
+//     })
+//     departments.forEach(department => {
+//     console.log("Department:", department.Dname);
+//     console.log("Department Code:", department.Dcode);
+//     console.log("Employees:", department.employees);
+
+
+// });
+   let filtered = employees.filter(employee => employee.salary >= 10 && employee.country === "india");
+   console.log("Employees with salary greater than or equal to 10 and from India:");
+
+   filtered.forEach(employee => {
+       console.log(`- ${employee.name}: ${employee.salary}`);
+   });
+
+
+   let S = employees.filter(employee => employee.name.startsWith("s"));
+   console.log("Employees whose names start with 's':");
+    S.forEach(employee => {
+        console.log(`- ${employee.name}`);
+    }); 
+
+
+departments.forEach(department => {
+    let departmentEmployees = employees.filter(employee => employee.department === department.Dname);
+    department.employees = departmentEmployees.map(employee => employee.name);
+});
+
+departments.forEach(department => {
+    console.log("Department:", department.Dname);
+    console.log("Department Code:", department.Dcode);
+    console.log("Employees:", department.employees);
+});
+ 
+
+//to push an object in employee whose
+ //employeename  is the first letter for each employee name  , salary is the average of all the salary ,department name is country names 3rd letter ,
+ //keep any age and country name 
+
+ let TS = 0;
+
+employees.forEach(employee => {
+    TS += employee.salary;
+});
+
+let newEmployee = {
+    employeename: employees.map(employee => employee.name.charAt(0)).join(""),
+    salary: TS / employees.length,
+    department: employees.map(employee => employee.country.charAt(2)).join(""),
+    age: 30,
+    country: "USA"
+};
+
+employees.push(newEmployee);
+
+console.log("Updated employees list:", employees);
+
+
+
+let oneEmpFrmDept = departments.map(department => {
+    let emp = employees.find(
+        employee => employee.department === department.Dname.trim()
+    );
+
+    return {
+        nameAndCountry: `${emp.name} ${emp.country}`,
+        salaryAndAge: `${emp.salary} ${emp.age}`,
+        dept: department.Dname.trim()
+    };
+});
+
+console.log(oneEmpFrmDept);
+
+//to create an arrray of objects with employeename and deptcode use map function and print it in console
+//let dept_codes = [{Employeename: " " ,deptcode: 58 ,7}]
+  
+let dept_codes = employees.map(employee => {
+    let dept = departments.find(department => department.Dname === employee.department);
+    return {
+        Employeename: employee.name,
+        deptcode: dept ? dept.Dcode : null
+    };
+});
+    console.log(dept_codes);
+    </script>
+    
+
+    
+</body>
+</html>
