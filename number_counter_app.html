@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>number counter app</title>
+    <link rel="icon" href="data:,">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#667eea,#764ba2,#2b5876);
+    overflow:hidden;
+}
+
+.container{
+    width:340px;
+    padding:40px 30px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 20px 50px rgba(0,0,0,.3);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    transition:.4s;
+}
+
+.container:hover{
+    transform:translateY(-8px);
+    box-shadow:0 30px 60px rgba(0,0,0,.35);
+}
+
+.container::before{
+    content:"Counter";
+    color:white;
+    font-size:26px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+#counter{
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:65px;
+    color:#fff;
+    background:linear-gradient(135deg,#00dbde,#fc00ff);
+    box-shadow:
+        inset 0 5px 15px rgba(255,255,255,.25),
+        0 15px 35px rgba(0,0,0,.35);
+    transition:.3s;
+    user-select:none;
+}
+
+#counter:hover{
+    transform:scale(1.05) rotate(5deg);
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    color:white;
+    transition:.3s;
+}
+
+#increase{
+    background:linear-gradient(135deg,#00c853,#64dd17);
+}
+
+#increase:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(0,200,83,.4);
+}
+
+#decrease{
+    background:linear-gradient(135deg,#ff416c,#ff4b2b);
+}
+
+#decrease:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(255,65,108,.4);
+}
+
+#reset{
+    background:linear-gradient(135deg,#4facfe,#00f2fe);
+}
+
+#reset:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(79,172,254,.4);
+}
+
+button:active{
+    transform:scale(.97);
+}
+
+@media(max-width:450px){
+
+    .container{
+        width:90%;
+        padding:35px 20px;
+    }
+
+    #counter{
+        width:150px;
+        height:150px;
+        font-size:55px;
+    }
+
+}
+</style>
+<body>
+    
+
+<div class="container">
+ <div><h1 id="counter">0</h1></div>
+ <button id = "increase">Increase</button>
+ <button id = "decrease">Decrease</button>
+ <button id = "reset">Reset</button>
+</div>
+
+
+
+    <script>
+
+let counter = document.querySelector("#counter");
+let increaseButton = document.querySelector("#increase");
+let decreaseButton = document.querySelector("#decrease");
+let resetButton = document.querySelector("#reset");
+
+    function increaseCounter() {
+        let currentValue = parseInt(counter.textContent);
+        counter.textContent = currentValue + 1;
+    }
+    function decreaseCounter() {
+        let currentValue = parseInt(counter.textContent);
+        if (currentValue > 0) {
+            counter.textContent = currentValue - 1;
+        }
+    }
+    function resetCounter() {
+        counter.textContent = 0;
+    }
+    increaseButton.addEventListener("click", increaseCounter);
+    decreaseButton.addEventListener("click", decreaseCounter);
+    resetButton.addEventListener("click", resetCounter);
+
+
+     
+    </script>
+</body>
+</html>

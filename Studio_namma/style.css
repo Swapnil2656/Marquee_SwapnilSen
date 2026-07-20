@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+@font-face {
+    font-family: harsh;
+    src: url(./GTPressuraMono.ttf);
+}
+@font-face {
+    font-family: mixbold;
+    src: url(./SairaExtraCondensed-ExtraBold.ttf);
+}
+header{
+    height: 10vh;
+    width: 100%;
+    background: #E4E4E4;
+    display: flex;
+    padding: 0px 30px;
+    font-family: harsh;
+    position: fixed;
+    z-index: 99999;
+
+}
+header p{
+  text-transform: uppercase;
+}
+.left{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    gap: 150px;
+    
+}
+.left p{
+    font-weight: 400;
+}
+.right{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.hero{
+    height: 100vh;
+    width: 100%;
+    background: #E4E4E4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+.hero h1{
+    font-size: 160px;
+    font-family: mixbold;
+    line-height: 180px;
+    font-size: 210px;
+    text-transform: uppercase;
+}
+.cardfollower{
+    height: 300px;
+    width: 250px;
+    background-color: pink;
+   position: absolute;
+    z-index: 999;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.cardfollower video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.video-container{
+    height: 100vh;
+    width: 100%;
+    background-color: #E4E4E4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.video-container video{
+    height: 95%;
+    width: 95%;
+    object-fit: cover;
+
+
+}
+
+.creative-studio{
+    height: 100vh;
+    width: 100%;
+    background-color: #E4E4E4;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 100px;
+    font-family: harsh;
+}
+.creative-studio p{
+    margin-bottom: 5%;
+    font-size: 20px;
+}
+.creative-studio h1{
+    font-family: mixbold;
+    font-size: 100px;
+    line-height: 90px;
+}
+.cursor-dot{
+    height: 20px;
+    width: 20px;
+    background-color: #1540ff;
+    position: absolute;
+    z-index: 999;
+    border-radius: 50px;
+    overflow: hidden;
+}
+.menu{
+    height: 100%;
+    width: 200%;
+    background-color: red;
+    position: fixed;
+    z-index: 9999;
+    top: -100%;
+    right: 0%;
+    left: 0%;
+}

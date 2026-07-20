@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to create a full fledge calculator in js</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<style>
+   *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background:#1e1f26;
+}
+
+.calculator{
+    background:#262730;
+    padding:18px;
+    border-radius:28px;
+    width:380px;
+    box-shadow:0 15px 35px rgba(0,0,0,.4);
+}
+
+.mydiv{
+    width:100%;
+    height:120px;
+    background:#262730;
+    border:2px solid #4b4d56;
+    border-radius:30px;
+    color:white;
+    display:flex;
+    justify-content:flex-end;
+    align-items:flex-end;
+    padding:20px;
+    font-size:60px;
+    margin-bottom:20px;
+    overflow:hidden;
+}
+
+.firstrow,
+.secondrow,
+.thirdrow,
+.fourthrow,
+.fifthrow{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+}
+
+button{
+    width:82px;
+    height:82px;
+    border:none;
+    border-radius:40px;
+    background:#3a3c45;
+    color:#f3f3f3;
+    font-size:34px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    filter:brightness(115%);
+}
+
+button:active{
+    transform:scale(.95);
+}
+
+.number{
+    background:#3b3d46;
+}
+
+.operator{
+    background:#2f3344;
+}
+
+.equal{
+    background:#9bb7eb;
+    color:#111;
+    font-weight:bold;
+}
+
+.equal:hover{
+    background:#aec5ef;
+}
+
+.clear{
+    background:#2f3344;
+}
+
+.zero{
+    width:82px;
+}
+
+</style>
+<body>
+    <div class="calculator">
+
+    <div class="mydiv">0</div>
+
+    <div class="firstrow">
+        <button class="operator">(</button>
+        <button class="operator">)</button>
+        <button class="operator">%</button>
+        <button class="clear">AC</button>
+    </div>
+
+    <div class="secondrow">
+        <button class="number">7</button>
+        <button class="number">8</button>
+        <button class="number">9</button>
+        <button class="operator">÷</button>
+    </div>
+
+    <div class="thirdrow">
+        <button class="number">4</button>
+        <button class="number">5</button>
+        <button class="number">6</button>
+        <button class="operator">×</button>
+    </div>
+
+    <div class="fourthrow">
+        <button class="number">1</button>
+        <button class="number">2</button>
+        <button class="number">3</button>
+        <button class="operator">−</button>
+    </div>
+
+    <div class="fifthrow">
+        <button class="number zero">0</button>
+        <button class="number">.</button>
+        <button class="equal">=</button>
+        <button class="operator">+</button>
+    </div>
+
+</div>
+</body>
+
+    <script>
+
+        let display = document.querySelector(".mydiv");
+        let buttons = document.querySelectorAll("button");
+        let firstNumber = "";
+        let secondNumber = "";
+        let operator = "";
+        function buttonClick() {
+            let value = this.textContent;
+            if (value == "AC") {
+                firstNumber = "";
+                secondNumber = "";
+                operator = "";
+                display.textContent = "0";
+            }
+            else if (value == "+" || value == "-" || value == "*" || value == "/") {
+                operator = value;
+                display.textContent += value;
+            }
+            else if (value == "=") {
+                let answer;
+                if (operator == "+") {
+                    answer = Number(firstNumber) + Number(secondNumber);
+                }
+                else if (operator == "-") {
+                    answer = Number(firstNumber) - Number(secondNumber);
+                }
+                else if (operator == "*") {
+                    answer = Number(firstNumber) * Number(secondNumber);
+                }
+                else if (operator == "/") {
+                    answer = Number(firstNumber) / Number(secondNumber);
+                }
+                display.textContent = answer;
+
+                firstNumber = answer.toString();
+                secondNumber = "";
+                operator = "";
+            }
+            else {
+                if (operator == "") {
+                    firstNumber += value;
+                } else {
+                    secondNumber += value;
+                }
+                display.textContent = firstNumber + operator + secondNumber;
+            }
+        }
+        buttons.forEach(function(button) {
+            button.addEventListener("click", buttonClick);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event listener javascript</title>
+      <link rel="icon" href="data:,">
+      <style>
+        body{
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(
+        135deg,
+        #0f2027,
+        #203a43,
+        #2c5364
+    );
+}
+       #mydiv{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    border: 3px solid rgba(255,255,255,0.4);
+    border-radius: 50px;
+
+    backdrop-filter: blur(12px);
+    box-shadow:
+        0 15px 35px rgba(255, 75, 43, 0.4),
+        0 0 20px rgba(255, 65, 108, 0.5);
+
+    cursor: pointer;
+    user-select: none;
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+}
+
+#mydiv:hover{
+    transform: scale(1.08) rotate(3deg);
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    box-shadow:
+        0 20px 40px rgba(37,117,252,0.5),
+        0 0 30px rgba(106,17,203,0.7);
+}
+
+#mydiv:active{
+    transform: scale(0.95);
+}
+        /* .class1 {
+            background-color: greenyellow;
+        }
+        .class2 {
+            background-color: green;
+        }
+        .class3 {
+            background-color: blue;
+        }
+        .class4 {
+            background-color: yellow;
+        }
+        .class5 {
+            background-color: orange;
+        } */
+        /* #countbtn {
+            width: 200px;
+            height: 50px;
+            border-radius: 40px;
+           background-color: maroon;
+           color: white;
+        } */
+        /* #increasebtn {
+            width: 100px;
+            height: 50px;
+            border-radius: 40px;
+           background-color: green;
+           color: white;
+        }
+        #decreasebtn {
+            width: 100px;
+            height: 50px;
+            border-radius: 40px;
+           background-color: red;
+           color: white;
+        } */
+
+        /* #addbtn {
+            width: 100px;
+            height: 50px;
+            border-radius: 40px;
+           background-color: green;
+           color: white;
+        }
+        #subbtn {
+            width: 100px;
+            height: 50px;
+            border-radius: 40px;
+           background-color: red;
+           color: white;            
+        }
+        #mulbtn {
+            width: 100px;
+            height: 50px;
+            border-radius: 40px;
+           background-color: blue;
+           color: white;            
+        }
+        #divbtn {
+            width: 100px;
+            height: 50px;
+            border-radius: 40px;
+           background-color: yellow;               
+        } */
+
+      </style>
+</head>
+<body>
+    <!-- <div id="mydiv"> click me!</div> -->
+     <!-- <div id = "mydiv">0</div>
+     <br>
+     <button id = "decreasebtn">Decrease</button>
+     <button id = "increasebtn">Increase</button> -->
+
+ <div id = "mydiv"></div>
+<script>
+    //------------------------- Event Listener ------------------------//
+    // 1. add event listner
+    // 2. click events
+    // 3.onclick vs addEventListener
+    // 4. remove event listener
+
+    //method 1.
+    //button.onclick = function () {
+    //    console.log("button clicked");
+    //}
+
+    //method 2.
+    //button.addEventListener('click', function () {
+    //    console.log("button clicked");
+    //})
+
+    //to generate multiple classes on click event
+    // let mydiv = document.querySelector('#mydiv');
+    // let i = 0;
+    // let arr = ['class1', 'class2', 'class3', 'class4', 'class5'];
+    // mydiv.addEventListener('click', function () {
+    //     mydiv.className = arr[i];
+    //     i++;
+    //     if (i >= arr.length) {
+    //         i = 0;
+    //     }
+    // })
+
+    // let div = document.querySelector('#mydiv');
+    // let countbtn = document.querySelector('#countbtn');
+    // let count = 0;
+    
+    // countbtn.addEventListener('click', function () {
+    //     console.log("button clicked");
+    //     count++;
+    //     div.innerHTML = count;
+
+    // })
+
+    // let div=document.querySelector('#mydiv');
+    // let increasebtn = document.querySelector('#increasebtn');
+    // let decreasebtn = document.querySelector('#decreasebtn');
+    // let count = 0;
+    // increasebtn.addEventListener('click', function () {
+    //     console.log("button clicked");
+    //     count++;
+    //     div.innerHTML = count;
+    // })
+    // decreasebtn.addEventListener('click', function () {
+    //     console.log("button clicked");
+    //     count--;
+    //     div.innerHTML = count;
+    // })
+
+
+   
+   
+//dblclick event
+// document.querySelector('#mydiv').addEventListener('dblclick', function(){
+//     console.log("double clicked");
+//     this.style.backgroundColor = "green";
+// })  
+   
+//mouse move event moving with mouse cursor
+
+let div = document.querySelector("#mydiv");
+
+document.addEventListener("mousemove", function(e){
+
+    console.log(e.clientX, e.clientY);
+
+    div.style.left = e.clientX + "px";
+    div.style.top = e.clientY + "px";
+
+});
+
+
+
+
+</script>
+</body>
+</html>
+

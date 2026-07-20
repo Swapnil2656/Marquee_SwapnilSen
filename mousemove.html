@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event listener javascript</title>
+      <link rel="icon" href="data:,">
+      <style>
+        body{
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(
+        135deg,
+        #0f2027,
+        #203a43,
+        #2c5364
+    );
+}
+       #mydiv{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    border: 3px solid rgba(255,255,255,0.4);
+    border-radius: 50px;
+
+    backdrop-filter: blur(12px);
+    box-shadow:
+        0 15px 35px rgba(255, 75, 43, 0.4),
+        0 0 20px rgba(255, 65, 108, 0.5);
+
+    cursor: pointer;
+    user-select: none;
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease;
+}
+
+#mydiv:hover{
+    transform: scale(1.08) rotate(3deg);
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    box-shadow:
+        0 20px 40px rgba(37,117,252,0.5),
+        0 0 30px rgba(106,17,203,0.7);
+}
+
+#mydiv:active{
+    transform: scale(0.95);
+}
+
+
+.box{
+    position: fixed;
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 221, 0, 0.95);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 0 0 14px rgba(255, 221, 0, 0.85);
+    opacity: 1;
+    transition: opacity 600ms ease-out, transform 600ms ease-out;
+}
+
+</style>
+</head>
+<body>
+ 
+ <!-- <div id = "mydiv"></div> -->
+ 
+<script>
+
+  document.addEventListener("mousemove", function(e){
+    const box = document.createElement("div");
+    box.className = "box";
+    box.style.left = e.clientX + "px";
+    box.style.top = e.clientY + "px";
+    document.body.appendChild(box);
+
+        setTimeout(() => {
+            box.style.opacity = "0";
+            box.style.transform = "translate(-50%, -50%) scale(0.35)";
+        }, 180);
+
+        setTimeout(() => {
+            box.remove();
+        }, 820);
+
+    console.log(document.querySelectorAll(".box").length);
+});
+</script>
+</body>
+</html>
